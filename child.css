@@ -1,0 +1,792 @@
+```css
+/* =========================================================
+   CHILDREN CREATIVE ART SHOWCASE
+   Main Stylesheet
+   ========================================================= */
+
+
+/* =========================
+   GLOBAL RESET
+   ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #fffaf5;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================
+   NAVBAR
+   ========================= */
+
+.navbar {
+    width: 100%;
+    min-height: 75px;
+    padding: 0 6%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: #ff6b6b;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links li a {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #444;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.nav-links li a:not(.login-btn)::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    left: 50%;
+    bottom: -8px;
+    border-radius: 10px;
+    background: #ff6b6b;
+    transform: translateX(-50%);
+    transition: 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #ff6b6b;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.login-btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: #ff6b6b;
+    color: #ffffff !important;
+    transition: 0.3s ease;
+}
+
+.login-btn:hover {
+    background: #e95757;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   HERO SECTION
+   ========================= */
+
+.hero {
+    min-height: 620px;
+    padding: 80px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255, 214, 165, 0.45), transparent 25%),
+        radial-gradient(circle at 90% 30%, rgba(184, 233, 255, 0.45), transparent 25%),
+        linear-gradient(135deg, #fffaf5, #fff);
+    overflow: hidden;
+}
+
+.hero-content {
+    width: 55%;
+    max-width: 700px;
+}
+
+.welcome-text {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 8px 16px;
+    background: #fff0df;
+    color: #ff6b6b;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.hero h1 {
+    font-size: clamp(2.8rem, 5vw, 4.8rem);
+    line-height: 1.12;
+    color: #252525;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    display: block;
+    color: #ff6b6b;
+}
+
+.hero-description {
+    max-width: 620px;
+    font-size: 1.08rem;
+    color: #666;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+    display: inline-block;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.primary-btn {
+    background: #ff6b6b;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.25);
+}
+
+.primary-btn:hover {
+    background: #e95757;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(255, 107, 107, 0.35);
+}
+
+.secondary-btn {
+    border: 2px solid #ff6b6b;
+    color: #ff6b6b;
+    background: #fff;
+}
+
+.secondary-btn:hover {
+    background: #ff6b6b;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   HERO ART AREA
+   ========================= */
+
+.hero-art {
+    width: 40%;
+    min-height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.art-card {
+    width: 300px;
+    height: 350px;
+    border-radius: 35px;
+    background:
+        linear-gradient(
+            145deg,
+            #ffe4e1,
+            #dff6ff,
+            #fff2b8
+        );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9rem;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+    transform: rotate(3deg);
+    position: relative;
+}
+
+.art-card::before {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 3px dashed rgba(255, 107, 107, 0.35);
+    border-radius: 25px;
+}
+
+.floating-card {
+    position: absolute;
+    padding: 12px 18px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    font-weight: 700;
+    font-size: 0.9rem;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.card-one {
+    top: 55px;
+    left: 0;
+}
+
+.card-two {
+    right: 0;
+    top: 150px;
+    animation-delay: 0.5s;
+}
+
+.card-three {
+    bottom: 45px;
+    left: 20px;
+    animation-delay: 1s;
+}
+
+@keyframes floating {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* =========================
+   COMMON SECTION
+   ========================= */
+
+.account-section,
+.features,
+.how-it-works {
+    padding: 90px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
+
+.section-heading p {
+    color: #ff6b6b;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.section-heading h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #252525;
+    margin-bottom: 10px;
+}
+
+.section-heading span {
+    color: #777;
+}
+
+
+/* =========================
+   ACCOUNT SECTION
+   ========================= */
+
+.account-section {
+    background: #fff;
+}
+
+.account-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.account-card {
+    padding: 38px 30px;
+    border-radius: 25px;
+    background: #fffaf5;
+    border: 1px solid #f3e5dc;
+    text-align: center;
+    transition: 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.account-card::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #ffe6df;
+    top: -45px;
+    right: -35px;
+}
+
+.account-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.09);
+}
+
+.account-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.account-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.account-card p {
+    color: #707070;
+    margin-bottom: 22px;
+    font-size: 0.95rem;
+}
+
+.account-card a {
+    display: inline-block;
+    color: #ff6b6b;
+    font-weight: 800;
+    transition: 0.3s ease;
+}
+
+.account-card a:hover {
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================
+   FEATURES
+   ========================= */
+
+.features {
+    background: #f8fbff;
+}
+
+.feature-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #edf0f5;
+    transition: 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card span {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #777;
+    font-size: 0.95rem;
+}
+
+
+/* =========================
+   HOW IT WORKS
+   ========================= */
+
+.how-it-works {
+    background: #fff;
+}
+
+.steps {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.step {
+    text-align: center;
+    padding: 20px;
+}
+
+.step-number {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: #ff6b6b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 800;
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.25);
+}
+
+.step h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.step p {
+    color: #777;
+    font-size: 0.92rem;
+}
+
+
+/* =========================
+   CTA
+   ========================= */
+
+.cta {
+    margin: 30px 8% 80px;
+    padding: 70px 30px;
+    text-align: center;
+    border-radius: 35px;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.3), transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.3), transparent 20%),
+        linear-gradient(135deg, #ff8a80, #ff6b6b);
+    color: #fff;
+}
+
+.cta h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    margin-bottom: 12px;
+}
+
+.cta p {
+    font-size: 1.1rem;
+    margin-bottom: 28px;
+}
+
+.cta .primary-btn {
+    background: #fff;
+    color: #ff6b6b;
+}
+
+.cta .primary-btn:hover {
+    background: #fff5f2;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    background: #242424;
+    color: #fff;
+}
+
+.footer-content {
+    padding: 60px 8%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+}
+
+.footer-content h3 {
+    color: #ff8a80;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.footer-content h4 {
+    margin-bottom: 15px;
+}
+
+.footer-content p {
+    max-width: 400px;
+    color: #bbb;
+}
+
+.footer-content a {
+    display: block;
+    color: #bbb;
+    margin-bottom: 8px;
+    transition: 0.3s ease;
+}
+
+.footer-content a:hover {
+    color: #ff8a80;
+    padding-left: 4px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #3b3b3b;
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        padding: 15px 4%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 70px 6%;
+    }
+
+    .hero-content {
+        width: 55%;
+    }
+
+    .hero-art {
+        width: 40%;
+    }
+
+    .art-card {
+        width: 240px;
+        height: 290px;
+        font-size: 7rem;
+    }
+
+    .account-container,
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        position: relative;
+        padding: 18px 5%;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links li a {
+        font-size: 0.85rem;
+    }
+
+    .login-btn {
+        padding: 8px 14px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 5%;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-art {
+        width: 100%;
+        min-height: 350px;
+    }
+
+    .art-card {
+        width: 230px;
+        height: 280px;
+    }
+
+    .card-one {
+        left: 5%;
+    }
+
+    .card-two {
+        right: 5%;
+    }
+
+    .account-section,
+    .features,
+    .how-it-works {
+        padding: 65px 5%;
+    }
+
+    .account-container,
+    .feature-grid,
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .cta {
+        margin: 20px 5% 60px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        padding: 45px 7%;
+        gap: 30px;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
+
+@media (max-width: 420px) {
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    .nav-links {
+        gap: 9px;
+    }
+
+    .nav-links li a {
+        font-size: 0.78rem;
+    }
+
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .floating-card {
+        font-size: 0.75rem;
+        padding: 9px 12px;
+    }
+
+    .card-one {
+        left: 0;
+    }
+
+    .card-two {
+        right: 0;
+    }
+}
+```
+
+Save this file as:
+
+```text
+style.css
+```
+
+in the **same folder as `index.html`**.
+
+Your current structure should be:
+
+```text
+Children-Art-Showcase/
+│
+├── index.html
+├── style.css
+└── script.js
+```
+
+Once we create the other pages, **the same `style.css` can be expanded** so `explore.html`, `community.html`, `challenges.html`, `login.html`, `dashboard.html`, etc. all have the same professional design.

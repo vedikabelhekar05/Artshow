@@ -1,0 +1,3592 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Little Artists | Creative Art Showcase</title>
+
+<style>
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fffaf7;
+    color:#333;
+}
+
+button,
+input,
+textarea,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.hidden{
+    display:none !important;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:white;
+    box-shadow:0 3px 20px rgba(0,0,0,.08);
+}
+
+.nav-container{
+    max-width:1400px;
+    margin:auto;
+    padding:15px 4%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:22px;
+    font-weight:bold;
+    color:#ff5f6d;
+}
+
+.logo-icon{
+    font-size:30px;
+}
+
+.nav-links{
+    display:flex;
+    gap:22px;
+    align-items:center;
+}
+
+.nav-links a{
+    font-size:14px;
+    font-weight:600;
+    color:#444;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#ff5f6d;
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.nav-btn{
+    border:none;
+    padding:10px 17px;
+    border-radius:25px;
+    background:#ff6b6b;
+    color:white;
+    font-weight:bold;
+}
+
+.nav-btn.outline{
+    background:white;
+    color:#ff6b6b;
+    border:2px solid #ff6b6b;
+}
+
+.notification{
+    position:relative;
+    border:none;
+    background:white;
+    font-size:20px;
+}
+
+.notification-count{
+    position:absolute;
+    top:-5px;
+    right:-7px;
+    background:red;
+    color:white;
+    border-radius:50%;
+    font-size:10px;
+    min-width:17px;
+    height:17px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.menu-btn{
+    display:none;
+    border:none;
+    background:none;
+    font-size:25px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:600px;
+    padding:80px 7%;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    align-items:center;
+    gap:50px;
+    background:
+        radial-gradient(circle at 10% 20%,#ffe4c7,transparent 25%),
+        radial-gradient(circle at 90% 20%,#dff6ff,transparent 25%),
+        #fffaf7;
+}
+
+.badge{
+    display:inline-block;
+    background:#fff0e8;
+    color:#ff5f6d;
+    padding:8px 16px;
+    border-radius:25px;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(40px,6vw,75px);
+    line-height:1.05;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#ff5f6d;
+}
+
+.hero p{
+    color:#666;
+    font-size:17px;
+    max-width:650px;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.primary{
+    border:none;
+    background:#ff5f6d;
+    color:white;
+    padding:14px 25px;
+    border-radius:30px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(255,95,109,.3);
+}
+
+.secondary{
+    border:2px solid #ff5f6d;
+    background:white;
+    color:#ff5f6d;
+    padding:12px 25px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+.hero-art{
+    min-height:400px;
+    border-radius:40px;
+    background:linear-gradient(135deg,#ffd9d9,#dff6ff,#fff1ad);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:150px;
+    box-shadow:0 25px 60px rgba(0,0,0,.12);
+    position:relative;
+}
+
+.float{
+    position:absolute;
+    background:white;
+    padding:12px 18px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    font-size:14px;
+    font-weight:bold;
+}
+
+.float.one{
+    left:-20px;
+    top:50px;
+}
+
+.float.two{
+    right:-20px;
+    top:130px;
+}
+
+.float.three{
+    left:20px;
+    bottom:40px;
+}
+
+
+/* =====================================================
+   COMMON
+===================================================== */
+
+section{
+    padding:80px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title small{
+    color:#ff5f6d;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.section-title h2{
+    font-size:38px;
+    margin:8px 0;
+}
+
+.section-title p{
+    color:#777;
+}
+
+
+/* =====================================================
+   ACCOUNT CARDS
+===================================================== */
+
+.account-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.account-card{
+    background:white;
+    border-radius:25px;
+    padding:30px;
+    border:1px solid #eee;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+    transition:.3s;
+}
+
+.account-card:hover{
+    transform:translateY(-8px);
+}
+
+.account-icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.account-card h3{
+    margin-bottom:10px;
+}
+
+.account-card p{
+    color:#777;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.account-card ul{
+    list-style:none;
+    margin-bottom:25px;
+}
+
+.account-card li{
+    margin:8px 0;
+    font-size:14px;
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+.dashboard{
+    background:#f7f9fc;
+}
+
+.dashboard-header{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.user-info{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.avatar{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#ffb6b9;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+}
+
+.stats-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.stat-card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.stat-card span{
+    font-size:25px;
+}
+
+.stat-card strong{
+    display:block;
+    font-size:30px;
+    margin-top:10px;
+}
+
+.stat-card small{
+    color:#777;
+}
+
+
+/* =====================================================
+   ARTWORK
+===================================================== */
+
+.art-section{
+    background:white;
+}
+
+.tools{
+    max-width:1200px;
+    margin:0 auto 30px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.search{
+    flex:1;
+    min-width:200px;
+    padding:13px 17px;
+    border:1px solid #ddd;
+    border-radius:25px;
+    outline:none;
+}
+
+.filter{
+    padding:13px 17px;
+    border:1px solid #ddd;
+    border-radius:25px;
+    background:white;
+}
+
+.art-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.art-card{
+    background:white;
+    border:1px solid #eee;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 7px 20px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+.art-card:hover{
+    transform:translateY(-5px);
+}
+
+.art-image{
+    height:210px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:80px;
+    background:linear-gradient(135deg,#ffe0e6,#e1f7ff);
+}
+
+.art-info{
+    padding:18px;
+}
+
+.art-info h3{
+    margin-bottom:8px;
+}
+
+.artist{
+    color:#777;
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+.art-actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.like-btn{
+    border:none;
+    background:none;
+    font-size:14px;
+    color:#555;
+}
+
+.like-btn.liked{
+    color:#e63946;
+}
+
+
+/* =====================================================
+   UPLOAD
+===================================================== */
+
+.upload-section{
+    background:#fff7f3;
+}
+
+.upload-box{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+}
+
+.form-group textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.preview{
+    width:100%;
+    max-height:250px;
+    object-fit:contain;
+    margin-top:10px;
+    border-radius:15px;
+    display:none;
+}
+
+
+/* =====================================================
+   CHALLENGES
+===================================================== */
+
+.challenge-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.challenge-card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    border:1px solid #eee;
+    box-shadow:0 7px 20px rgba(0,0,0,.05);
+}
+
+.challenge-icon{
+    font-size:50px;
+}
+
+.challenge-card h3{
+    margin:15px 0 8px;
+}
+
+.challenge-card p{
+    color:#777;
+    font-size:14px;
+}
+
+.progress{
+    height:8px;
+    background:#eee;
+    border-radius:10px;
+    margin:15px 0;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    background:#ff6b6b;
+}
+
+
+/* =====================================================
+   COMMUNITY
+===================================================== */
+
+.community{
+    background:#f7f9fc;
+}
+
+.community-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    gap:20px;
+}
+
+.post{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.post-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.post-avatar{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#ffd6a5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.post p{
+    color:#666;
+    margin:10px 0;
+}
+
+.post-actions{
+    display:flex;
+    gap:20px;
+    margin-top:15px;
+    font-size:14px;
+}
+
+
+/* =====================================================
+   LEADERBOARD
+===================================================== */
+
+.leaderboard{
+    background:white;
+}
+
+.leaderboard-list{
+    max-width:850px;
+    margin:auto;
+}
+
+.leader{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    background:#fafafa;
+    padding:18px;
+    margin-bottom:10px;
+    border-radius:15px;
+}
+
+.rank{
+    width:35px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.leader-avatar{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#ffd6a5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.leader-name{
+    flex:1;
+}
+
+.score{
+    font-weight:bold;
+    color:#ff5f6d;
+}
+
+
+/* =====================================================
+   LOGIN MODAL
+===================================================== */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:2000;
+    padding:20px;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:500px;
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    position:relative;
+    max-height:90vh;
+    overflow:auto;
+}
+
+.close{
+    position:absolute;
+    right:20px;
+    top:15px;
+    border:none;
+    background:none;
+    font-size:25px;
+}
+
+
+/* =====================================================
+   COMMENTS
+===================================================== */
+
+.comments{
+    margin-top:20px;
+    border-top:1px solid #eee;
+    padding-top:15px;
+}
+
+.comment{
+    background:#f7f7f7;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:8px;
+}
+
+.comment strong{
+    font-size:13px;
+}
+
+.comment p{
+    font-size:13px;
+    margin-top:3px;
+}
+
+.comment-form{
+    display:flex;
+    gap:8px;
+    margin-top:12px;
+}
+
+.comment-form input{
+    flex:1;
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius:20px;
+}
+
+
+/* =====================================================
+   NOTIFICATIONS
+===================================================== */
+
+.notification-panel{
+    position:fixed;
+    right:20px;
+    top:75px;
+    width:320px;
+    max-height:400px;
+    overflow:auto;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 10px 35px rgba(0,0,0,.15);
+    z-index:1500;
+    display:none;
+}
+
+.notification-panel.active{
+    display:block;
+}
+
+.notification-item{
+    padding:15px;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta{
+    margin:70px 7%;
+    padding:70px 30px;
+    text-align:center;
+    border-radius:35px;
+    color:white;
+    background:linear-gradient(135deg,#ff7b7b,#ff5f6d);
+}
+
+.cta h2{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.cta p{
+    margin-bottom:25px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    background:#252525;
+    color:white;
+    padding:60px 7% 20px;
+}
+
+.footer-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+footer h3{
+    margin-bottom:15px;
+}
+
+footer p,
+footer a{
+    color:#aaa;
+    font-size:14px;
+}
+
+footer a{
+    display:block;
+    margin-bottom:8px;
+}
+
+.footer-bottom{
+    max-width:1200px;
+    margin:40px auto 0;
+    padding-top:20px;
+    border-top:1px solid #444;
+    text-align:center;
+    color:#888;
+    font-size:13px;
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    background:#222;
+    color:white;
+    padding:14px 20px;
+    border-radius:10px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:.3s;
+    z-index:3000;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:1000px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .account-grid,
+    .challenge-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .art-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+
+@media(max-width:600px){
+
+    .nav-container{
+        padding:12px 5%;
+    }
+
+    .nav-actions .nav-btn{
+        display:none;
+    }
+
+    .hero{
+        padding:55px 5%;
+    }
+
+    .hero-art{
+        min-height:300px;
+        font-size:100px;
+    }
+
+    section{
+        padding:60px 5%;
+    }
+
+    .section-title h2{
+        font-size:30px;
+    }
+
+    .account-grid,
+    .challenge-grid,
+    .art-grid,
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .dashboard-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cta{
+        margin:50px 5%;
+    }
+
+    .cta h2{
+        font-size:30px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+<div class="nav-container">
+
+<a href="#home" class="logo">
+
+<span class="logo-icon">🎨</span>
+
+Little Artists
+
+</a>
+
+
+<nav class="nav-links">
+
+<a href="#home">Home</a>
+
+<a href="#explore">Explore Art</a>
+
+<a href="#upload">Upload</a>
+
+<a href="#challenges">Challenges</a>
+
+<a href="#community">Community</a>
+
+<a href="#leaderboard">Leaderboard</a>
+
+<a href="#dashboard">Dashboard</a>
+
+</nav>
+
+
+<div class="nav-actions">
+
+<button
+class="notification"
+onclick="toggleNotifications()">
+
+🔔
+
+<span
+id="notificationCount"
+class="notification-count">
+
+0
+
+</span>
+
+</button>
+
+
+<button
+class="nav-btn outline"
+onclick="openLogin()">
+
+Login
+
+</button>
+
+
+<button
+class="nav-btn"
+onclick="openRegister()">
+
+Join Now
+
+</button>
+
+</div>
+
+
+<button
+class="menu-btn"
+onclick="toggleMobileMenu()">
+
+☰
+
+</button>
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================================
+     NOTIFICATION PANEL
+===================================================== -->
+
+<div
+id="notificationPanel"
+class="notification-panel">
+
+<div class="notification-item">
+
+<strong>
+Notifications
+</strong>
+
+</div>
+
+<div id="notificationList">
+
+<p class="notification-item">
+No notifications yet.
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+id="home"
+class="hero">
+
+<div>
+
+<span class="badge">
+
+🌟 A Creative Community for Young Artists
+
+</span>
+
+
+<h1>
+
+Every Child Has
+
+<span>
+A Story to Create.
+</span>
+
+</h1>
+
+
+<p>
+
+A safe and joyful digital space where children
+can showcase their creativity, participate in
+challenges, earn achievements, and grow while
+parents connect and support their creative journey.
+
+</p>
+
+
+<div class="buttons">
+
+<button
+class="primary"
+onclick="scrollToSection('explore')">
+
+Explore Artwork →
+
+</button>
+
+
+<button
+class="secondary"
+onclick="openRegister()">
+
+Start Creating 🎨
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="hero-art">
+
+🎨
+
+<div class="float one">
+❤️ 245 Likes
+</div>
+
+<div class="float two">
+🏆 Creative Star
+</div>
+
+<div class="float three">
+💬 32 Comments
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ACCOUNT TYPES
+===================================================== -->
+
+<section>
+
+<div class="section-title">
+
+<small>CHOOSE YOUR EXPERIENCE</small>
+
+<h2>
+Who Are You?
+</h2>
+
+<p>
+Different accounts provide different capabilities.
+</p>
+
+</div>
+
+
+<div class="account-grid">
+
+
+<div class="account-card">
+
+<div class="account-icon">
+👧
+</div>
+
+<h3>
+Child Account
+</h3>
+
+<p>
+For young artists who want to create, upload,
+participate and build their creative portfolio.
+</p>
+
+<ul>
+
+<li>✓ Upload artwork</li>
+<li>✓ Join challenges</li>
+<li>✓ Earn badges</li>
+<li>✓ Track creativity</li>
+<li>✓ Build portfolio</li>
+
+</ul>
+
+<button
+class="primary"
+onclick="selectAccount('child')">
+
+Join as Child
+
+</button>
+
+</div>
+
+
+
+<div class="account-card">
+
+<div class="account-icon">
+👨‍👩‍👧
+</div>
+
+<h3>
+Parent Account
+</h3>
+
+<p>
+For parents who want to support children and
+participate in the community.
+</p>
+
+<ul>
+
+<li>✓ Explore artwork</li>
+<li>✓ Like artwork</li>
+<li>✓ Comment</li>
+<li>✓ Parent community</li>
+<li>✓ Notifications</li>
+
+</ul>
+
+<button
+class="primary"
+onclick="selectAccount('parent')">
+
+Join as Parent
+
+</button>
+
+</div>
+
+
+
+<div class="account-card">
+
+<div class="account-icon">
+👨‍👩‍👧‍👦
+</div>
+
+<h3>
+Parent + Child
+</h3>
+
+<p>
+The complete experience combining child
+and parent functionality.
+</p>
+
+<ul>
+
+<li>✓ All child features</li>
+<li>✓ All parent features</li>
+<li>✓ Manage child profile</li>
+<li>✓ Creative progress</li>
+<li>✓ Full community access</li>
+
+</ul>
+
+<button
+class="primary"
+onclick="selectAccount('both')">
+
+Get Full Access
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section
+id="dashboard"
+class="dashboard">
+
+<div class="section-title">
+
+<small>YOUR SPACE</small>
+
+<h2>
+My Dashboard
+</h2>
+
+<p>
+Your creative activity and progress.
+</p>
+
+</div>
+
+
+<div class="dashboard-header">
+
+<div class="user-info">
+
+<div
+id="dashboardAvatar"
+class="avatar">
+
+👤
+
+</div>
+
+<div>
+
+<h3 id="dashboardName">
+Guest User
+</h3>
+
+<p id="dashboardRole">
+Not logged in
+</p>
+
+</div>
+
+</div>
+
+
+<button
+class="primary"
+onclick="openRegister()">
+
+Create Account
+
+</button>
+
+</div>
+
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<span>
+🎨
+</span>
+
+<strong id="artworkStat">
+0
+</strong>
+
+<small>
+Artworks
+</small>
+
+</div>
+
+
+<div class="stat-card">
+
+<span>
+❤️
+</span>
+
+<strong id="likesStat">
+0
+</strong>
+
+<small>
+Likes Received
+</small>
+
+</div>
+
+
+<div class="stat-card">
+
+<span>
+⭐
+</span>
+
+<strong id="scoreStat">
+0
+</strong>
+
+<small>
+Creativity Score
+</small>
+
+</div>
+
+
+<div class="stat-card">
+
+<span>
+🏅
+</span>
+
+<strong id="badgeStat">
+0
+</strong>
+
+<small>
+Badges
+</small>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EXPLORE ART
+===================================================== -->
+
+<section
+id="explore"
+class="art-section">
+
+<div class="section-title">
+
+<small>CREATIVE SHOWCASE</small>
+
+<h2>
+Explore Artwork
+</h2>
+
+<p>
+Discover artwork created by young artists.
+</p>
+
+</div>
+
+
+<div class="tools">
+
+<input
+type="text"
+id="searchInput"
+class="search"
+placeholder="🔍 Search artwork or artist..."
+oninput="displayArtworks()">
+
+
+<select
+id="categoryFilter"
+class="filter"
+onchange="displayArtworks()">
+
+<option value="all">
+All Categories
+</option>
+
+<option value="drawing">
+Drawing
+</option>
+
+<option value="painting">
+Painting
+</option>
+
+<option value="craft">
+Craft
+</option>
+
+<option value="nature">
+Nature
+</option>
+
+</select>
+
+</div>
+
+
+<div
+id="artGrid"
+class="art-grid">
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     UPLOAD
+===================================================== -->
+
+<section
+id="upload"
+class="upload-section">
+
+<div class="section-title">
+
+<small>CREATE SOMETHING</small>
+
+<h2>
+Upload Your Artwork
+</h2>
+
+<p>
+Share your creativity with the community.
+</p>
+
+</div>
+
+
+<div class="upload-box">
+
+<div class="form-group">
+
+<label>
+Artwork Title
+</label>
+
+<input
+id="artTitle"
+type="text"
+placeholder="Enter artwork title">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Category
+</label>
+
+<select id="artCategory">
+
+<option value="drawing">
+Drawing
+</option>
+
+<option value="painting">
+Painting
+</option>
+
+<option value="craft">
+Craft
+</option>
+
+<option value="nature">
+Nature
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Description
+</label>
+
+<textarea
+id="artDescription"
+placeholder="Tell us about your artwork...">
+</textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Choose Artwork
+</label>
+
+<input
+id="artFile"
+type="file"
+accept="image/*"
+onchange="previewImage(event)">
+
+<img
+id="imagePreview"
+class="preview">
+
+</div>
+
+
+<button
+class="primary"
+onclick="uploadArtwork()">
+
+Publish Artwork 🎨
+
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CHALLENGES
+===================================================== -->
+
+<section
+id="challenges">
+
+<div class="section-title">
+
+<small>CREATIVE CHALLENGES</small>
+
+<h2>
+Challenge Yourself
+</h2>
+
+<p>
+Create. Participate. Achieve.
+</p>
+
+</div>
+
+
+<div class="challenge-grid">
+
+
+<div class="challenge-card">
+
+<div class="challenge-icon">
+🌍
+</div>
+
+<h3>
+Our Beautiful Planet
+</h3>
+
+<p>
+Create artwork showing your dream of a clean
+and beautiful planet.
+</p>
+
+<div class="progress">
+
+<span style="width:70%">
+</span>
+
+</div>
+
+<p>
+128 participants
+</p>
+
+<br>
+
+<button
+class="primary"
+onclick="joinChallenge('Our Beautiful Planet')">
+
+Join Challenge
+
+</button>
+
+</div>
+
+
+
+<div class="challenge-card">
+
+<div class="challenge-icon">
+🐾
+</div>
+
+<h3>
+My Favorite Animal
+</h3>
+
+<p>
+Draw or paint your favorite animal and
+tell us why you love it.
+</p>
+
+<div class="progress">
+
+<span style="width:45%">
+</span>
+
+</div>
+
+<p>
+86 participants
+</p>
+
+<br>
+
+<button
+class="primary"
+onclick="joinChallenge('My Favorite Animal')">
+
+Join Challenge
+
+</button>
+
+</div>
+
+
+
+<div class="challenge-card">
+
+<div class="challenge-icon">
+🚀
+</div>
+
+<h3>
+Future World
+</h3>
+
+<p>
+Imagine how the world might look 50 years
+from today.
+</p>
+
+<div class="progress">
+
+<span style="width:35%">
+</span>
+
+</div>
+
+<p>
+54 participants
+</p>
+
+<br>
+
+<button
+class="primary"
+onclick="joinChallenge('Future World')">
+
+Join Challenge
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COMMUNITY
+===================================================== -->
+
+<section
+id="community"
+class="community">
+
+<div class="section-title">
+
+<small>PARENT COMMUNITY</small>
+
+<h2>
+Connect & Support
+</h2>
+
+<p>
+Share experiences and encourage young creators.
+</p>
+
+</div>
+
+
+<div
+id="communityPosts"
+class="community-grid">
+
+</div>
+
+
+<div style="
+max-width:1000px;
+margin:25px auto;
+">
+
+<textarea
+id="communityInput"
+placeholder="Share something with the community..."
+style="
+width:100%;
+padding:15px;
+border:1px solid #ddd;
+border-radius:15px;
+min-height:100px;
+">
+
+</textarea>
+
+<br><br>
+
+<button
+class="primary"
+onclick="createCommunityPost()">
+
+Post to Community
+
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LEADERBOARD
+===================================================== -->
+
+<section
+id="leaderboard"
+class="leaderboard">
+
+<div class="section-title">
+
+<small>CREATIVE RECOGNITION</small>
+
+<h2>
+Young Artist Leaderboard
+</h2>
+
+<p>
+Creativity is more than popularity.
+</p>
+
+</div>
+
+
+<div
+id="leaderboardList"
+class="leaderboard-list">
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta">
+
+<h2>
+Every Child Is an Artist 🎨
+</h2>
+
+<p>
+Give their imagination a place to shine.
+</p>
+
+<br>
+
+<button
+class="secondary"
+onclick="openRegister()">
+
+Create Your Account →
+
+</button>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<h3>
+🎨 Little Artists
+</h3>
+
+<p>
+Children Creative Art Showcase and Parent
+Community Portal.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+Explore
+</h3>
+
+<a href="#home">
+Home
+</a>
+
+<a href="#explore">
+Artwork
+</a>
+
+<a href="#challenges">
+Challenges
+</a>
+
+<a href="#leaderboard">
+Leaderboard
+</a>
+
+</div>
+
+
+<div>
+
+<h3>
+Community
+</h3>
+
+<a href="#community">
+Parent Community
+</a>
+
+<a href="#">
+Safety
+</a>
+
+<a href="#">
+Guidelines
+</a>
+
+</div>
+
+
+<div>
+
+<h3>
+Account
+</h3>
+
+<a href="#dashboard">
+Dashboard
+</a>
+
+<a href="#upload">
+Upload
+</a>
+
+<a href="#">
+Profile
+</a>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+© 2026 Little Artists | Children Creative Art Showcase
+
+</div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     LOGIN MODAL
+===================================================== -->
+
+<div
+id="loginModal"
+class="modal">
+
+<div class="modal-box">
+
+<button
+class="close"
+onclick="closeModal('loginModal')">
+
+×
+
+</button>
+
+<h2>
+Login
+</h2>
+
+<br>
+
+<div class="form-group">
+
+<label>
+Name
+</label>
+
+<input
+id="loginName"
+type="text"
+placeholder="Enter your name">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Account Type
+</label>
+
+<select id="loginType">
+
+<option value="child">
+Child
+</option>
+
+<option value="parent">
+Parent
+</option>
+
+<option value="both">
+Parent + Child
+</option>
+
+</select>
+
+</div>
+
+
+<button
+class="primary"
+onclick="loginUser()">
+
+Login
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     REGISTER MODAL
+===================================================== -->
+
+<div
+id="registerModal"
+class="modal">
+
+<div class="modal-box">
+
+<button
+class="close"
+onclick="closeModal('registerModal')">
+
+×
+
+</button>
+
+<h2>
+Create Account
+</h2>
+
+<br>
+
+<div class="form-group">
+
+<label>
+Your Name
+</label>
+
+<input
+id="registerName"
+type="text"
+placeholder="Enter your name">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Account Type
+</label>
+
+<select id="registerType">
+
+<option value="child">
+Child Account
+</option>
+
+<option value="parent">
+Parent Account
+</option>
+
+<option value="both">
+Parent + Child Account
+</option>
+
+</select>
+
+</div>
+
+
+<button
+class="primary"
+onclick="registerUser()">
+
+Create Account
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     ARTWORK DETAIL MODAL
+===================================================== -->
+
+<div
+id="artModal"
+class="modal">
+
+<div class="modal-box">
+
+<button
+class="close"
+onclick="closeModal('artModal')">
+
+×
+
+</button>
+
+<div id="artDetail">
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+id="toast"
+class="toast">
+
+Success!
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let artworks =
+JSON.parse(localStorage.getItem("artworks")) || [
+
+{
+id:1,
+title:"My Colorful World",
+artist:"Aarav",
+age:10,
+category:"painting",
+emoji:"🌈",
+likes:245,
+comments:32,
+score:92
+},
+
+{
+id:2,
+title:"Butterfly Garden",
+artist:"Siya",
+age:9,
+category:"drawing",
+emoji:"🦋",
+likes:198,
+comments:27,
+score:88
+},
+
+{
+id:3,
+title:"My Dream House",
+artist:"Riya",
+age:11,
+category:"craft",
+emoji:"🏠",
+likes:176,
+comments:19,
+score:84
+},
+
+{
+id:4,
+title:"Nature Around Me",
+artist:"Vihaan",
+age:12,
+category:"nature",
+emoji:"🌳",
+likes:154,
+comments:24,
+score:81
+}
+
+];
+
+
+let communityPosts =
+JSON.parse(localStorage.getItem("communityPosts")) || [
+
+{
+author:"Priya's Mom",
+text:"How do you encourage creativity at home?",
+likes:24,
+comments:12
+},
+
+{
+author:"Neha's Parent",
+text:"Any ideas for simple weekend art activities?",
+likes:18,
+comments:8
+}
+
+];
+
+
+let currentUser =
+JSON.parse(localStorage.getItem("currentUser")) || null;
+
+
+let notifications =
+JSON.parse(localStorage.getItem("notifications")) || [];
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+function saveData(){
+
+localStorage.setItem(
+"artworks",
+JSON.stringify(artworks)
+);
+
+localStorage.setItem(
+"communityPosts",
+JSON.stringify(communityPosts)
+);
+
+localStorage.setItem(
+"notifications",
+JSON.stringify(notifications)
+);
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message){
+
+const toast =
+document.getElementById("toast");
+
+toast.textContent=message;
+
+toast.classList.add("show");
+
+setTimeout(()=>{
+
+toast.classList.remove("show");
+
+},2500);
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function scrollToSection(id){
+
+document
+.getElementById(id)
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* =====================================================
+   ACCOUNT
+===================================================== */
+
+function selectAccount(type){
+
+document.getElementById("registerType").value=type;
+
+openRegister();
+
+}
+
+
+function openLogin(){
+
+document
+.getElementById("loginModal")
+.classList.add("active");
+
+}
+
+
+function openRegister(){
+
+document
+.getElementById("registerModal")
+.classList.add("active");
+
+}
+
+
+function closeModal(id){
+
+document
+.getElementById(id)
+.classList.remove("active");
+
+}
+
+
+/* =====================================================
+   REGISTER
+===================================================== */
+
+function registerUser(){
+
+const name =
+document.getElementById("registerName")
+.value.trim();
+
+const type =
+document.getElementById("registerType")
+.value;
+
+
+if(!name){
+
+showToast("Please enter your name.");
+
+return;
+
+}
+
+
+currentUser={
+
+name:name,
+
+accountType:type,
+
+artworks:[],
+
+likes:0,
+
+score:0,
+
+badges:[]
+
+};
+
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
+
+
+closeModal("registerModal");
+
+updateDashboard();
+
+showToast(
+"Welcome to Little Artists, "+name+"! 🎨"
+);
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function loginUser(){
+
+const name =
+document.getElementById("loginName")
+.value.trim();
+
+const type =
+document.getElementById("loginType")
+.value;
+
+
+if(!name){
+
+showToast("Please enter your name.");
+
+return;
+
+}
+
+
+currentUser={
+
+name:name,
+
+accountType:type,
+
+artworks:[],
+
+likes:0,
+
+score:0,
+
+badges:[]
+
+};
+
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
+
+
+closeModal("loginModal");
+
+updateDashboard();
+
+showToast(
+"Welcome back, "+name+"! 👋"
+);
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+function updateDashboard(){
+
+if(!currentUser){
+
+document.getElementById(
+"dashboardName"
+).textContent="Guest User";
+
+document.getElementById(
+"dashboardRole"
+).textContent="Not logged in";
+
+return;
+
+}
+
+
+document.getElementById(
+"dashboardName"
+).textContent=currentUser.name;
+
+
+let role="";
+
+if(currentUser.accountType==="child"){
+
+role="👧 Child Account";
+
+}
+
+else if(currentUser.accountType==="parent"){
+
+role="👨‍👩‍👧 Parent Account";
+
+}
+
+else{
+
+role="👨‍👩‍👧‍👦 Parent + Child";
+
+}
+
+
+document.getElementById(
+"dashboardRole"
+).textContent=role;
+
+
+let myArtworks =
+artworks.filter(
+art=>art.artist===currentUser.name
+);
+
+
+let totalLikes =
+myArtworks.reduce(
+(sum,art)=>sum+art.likes,
+0
+);
+
+
+let score =
+myArtworks.reduce(
+(sum,art)=>sum+art.score,
+0
+);
+
+
+document.getElementById(
+"artworkStat"
+).textContent=myArtworks.length;
+
+
+document.getElementById(
+"likesStat"
+).textContent=totalLikes;
+
+
+document.getElementById(
+"scoreStat"
+).textContent=score;
+
+
+document.getElementById(
+"badgeStat"
+).textContent=
+score>=80 ? 3 :
+score>=50 ? 2 :
+score>0 ? 1 : 0;
+
+}
+
+
+/* =====================================================
+   DISPLAY ARTWORKS
+===================================================== */
+
+function displayArtworks(){
+
+const grid =
+document.getElementById("artGrid");
+
+const search =
+document.getElementById("searchInput")
+.value.toLowerCase();
+
+const category =
+document.getElementById("categoryFilter")
+.value;
+
+
+let filtered =
+artworks.filter(art=>{
+
+const matchesSearch =
+art.title.toLowerCase()
+.includes(search)
+||
+art.artist.toLowerCase()
+.includes(search);
+
+
+const matchesCategory =
+category==="all"
+||
+art.category===category;
+
+
+return matchesSearch &&
+matchesCategory;
+
+});
+
+
+grid.innerHTML="";
+
+
+if(filtered.length===0){
+
+grid.innerHTML=
+"<p>No artwork found.</p>";
+
+return;
+
+}
+
+
+filtered.forEach(art=>{
+
+const card=
+document.createElement("article");
+
+card.className="art-card";
+
+
+card.innerHTML=`
+
+<div
+class="art-image">
+
+${art.emoji}
+
+</div>
+
+<div class="art-info">
+
+<h3>
+${art.title}
+</h3>
+
+<div class="artist">
+
+Created by ${art.artist}
+· Age ${art.age}
+
+</div>
+
+<div class="art-actions">
+
+<button
+class="like-btn"
+onclick="likeArtwork(${art.id})">
+
+❤️ ${art.likes}
+
+</button>
+
+<span>
+💬 ${art.comments}
+</span>
+
+<span>
+⭐ ${art.score}
+</span>
+
+<button
+class="secondary"
+style="padding:6px 12px;font-size:11px"
+onclick="openArtwork(${art.id})">
+
+View
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+grid.appendChild(card);
+
+});
+
+}
+
+
+/* =====================================================
+   LIKE
+===================================================== */
+
+function likeArtwork(id){
+
+const art =
+artworks.find(
+item=>item.id===id
+);
+
+
+if(!art)return;
+
+
+art.likes++;
+
+art.score =
+Math.min(
+100,
+art.score+1
+);
+
+
+saveData();
+
+displayArtworks();
+
+updateLeaderboard();
+
+showToast("Artwork liked ❤️");
+
+}
+
+
+/* =====================================================
+   ARTWORK DETAILS
+===================================================== */
+
+function openArtwork(id){
+
+const art =
+artworks.find(
+item=>item.id===id
+);
+
+
+if(!art)return;
+
+
+const detail =
+document.getElementById("artDetail");
+
+
+detail.innerHTML=`
+
+<div style="
+font-size:100px;
+text-align:center;
+margin-bottom:15px">
+
+${art.emoji}
+
+</div>
+
+<h2>
+${art.title}
+</h2>
+
+<p>
+Created by <strong>${art.artist}</strong>
+· Age ${art.age}
+</p>
+
+<br>
+
+<p>
+Category: <strong>${art.category}</strong>
+</p>
+
+<br>
+
+<div>
+
+❤️ ${art.likes}
+&nbsp;&nbsp;
+💬 ${art.comments}
+&nbsp;&nbsp;
+⭐ ${art.score}/100
+
+</div>
+
+<br>
+
+<button
+class="primary"
+onclick="likeArtwork(${art.id});closeModal('artModal')">
+
+❤️ Like Artwork
+
+</button>
+
+<hr style="margin:25px 0">
+
+<h3>
+Comments
+</h3>
+
+<div id="commentArea">
+
+<p>
+Be positive and encouraging! 🌟
+</p>
+
+</div>
+
+<br>
+
+<div class="comment-form">
+
+<input
+id="commentInput"
+placeholder="Write a comment...">
+
+<button
+class="primary"
+onclick="addComment(${art.id})">
+
+Send
+
+</button>
+
+</div>
+
+`;
+
+
+document
+.getElementById("artModal")
+.classList.add("active");
+
+}
+
+
+/* =====================================================
+   COMMENTS
+===================================================== */
+
+function addComment(id){
+
+if(!currentUser){
+
+showToast(
+"Please create an account to comment."
+);
+
+return;
+
+}
+
+
+if(
+currentUser.accountType==="child"
+){
+
+showToast(
+"Commenting is available for Parent accounts."
+);
+
+return;
+
+}
+
+
+const input =
+document.getElementById("commentInput");
+
+
+const text =
+input.value.trim();
+
+
+if(!text){
+
+return;
+
+}
+
+
+const art =
+artworks.find(
+item=>item.id===id
+);
+
+
+art.comments++;
+
+
+art.score =
+Math.min(
+100,
+art.score+2
+);
+
+
+saveData();
+
+input.value="";
+
+displayArtworks();
+
+openArtwork(id);
+
+showToast(
+"Comment added 💬"
+);
+
+}
+
+
+/* =====================================================
+   IMAGE PREVIEW
+===================================================== */
+
+function previewImage(event){
+
+const file =
+event.target.files[0];
+
+
+if(!file)return;
+
+
+const preview =
+document.getElementById(
+"imagePreview"
+);
+
+
+preview.src=
+URL.createObjectURL(file);
+
+preview.style.display="block";
+
+}
+
+
+/* =====================================================
+   UPLOAD ARTWORK
+===================================================== */
+
+function uploadArtwork(){
+
+if(!currentUser){
+
+showToast(
+"Please create an account first."
+);
+
+return;
+
+}
+
+
+if(
+currentUser.accountType==="parent"
+){
+
+showToast(
+"Parent accounts cannot upload child artwork."
+);
+
+return;
+
+}
+
+
+const title =
+document.getElementById("artTitle")
+.value.trim();
+
+
+const category =
+document.getElementById("artCategory")
+.value;
+
+
+const description =
+document.getElementById("artDescription")
+.value.trim();
+
+
+if(!title){
+
+showToast(
+"Please enter artwork title."
+);
+
+return;
+
+}
+
+
+const emojis={
+
+drawing:"✏️",
+painting:"🎨",
+craft:"🏠",
+nature:"🌳"
+
+};
+
+
+const newArtwork={
+
+id:Date.now(),
+
+title:title,
+
+artist:currentUser.name,
+
+age:10,
+
+category:category,
+
+description:description,
+
+emoji:emojis[category],
+
+likes:0,
+
+comments:0,
+
+score:50
+
+};
+
+
+artworks.push(newArtwork);
+
+
+saveData();
+
+displayArtworks();
+
+updateDashboard();
+
+
+document.getElementById(
+"artTitle"
+).value="";
+
+
+document.getElementById(
+"artDescription"
+).value="";
+
+
+document.getElementById(
+"artFile"
+).value="";
+
+
+document.getElementById(
+"imagePreview"
+).style.display="none";
+
+
+addNotification(
+"Your artwork was successfully published! 🎨"
+);
+
+
+showToast(
+"Artwork published successfully! 🎨"
+);
+
+}
+
+
+/* =====================================================
+   CHALLENGE
+===================================================== */
+
+function joinChallenge(name){
+
+if(!currentUser){
+
+showToast(
+"Please create an account first."
+);
+
+return;
+
+}
+
+
+if(
+currentUser.accountType==="parent"
+){
+
+showToast(
+"Challenges are available for child accounts."
+);
+
+return;
+
+}
+
+
+addNotification(
+"You joined the "+name+" challenge! 🏆"
+);
+
+
+showToast(
+"Challenge joined! Good luck! 🏆"
+);
+
+}
+
+
+/* =====================================================
+   COMMUNITY
+===================================================== */
+
+function displayCommunity(){
+
+const container =
+document.getElementById(
+"communityPosts"
+);
+
+
+container.innerHTML="";
+
+
+communityPosts.forEach(
+(post,index)=>{
+
+const div =
+document.createElement("div");
+
+div.className="post";
+
+
+div.innerHTML=`
+
+<div class="post-header">
+
+<div class="post-avatar">
+
+${post.author.charAt(0)}
+
+</div>
+
+<strong>
+${post.author}
+</strong>
+
+</div>
+
+<h3>
+${post.text}
+</h3>
+
+<div class="post-actions">
+
+<button
+onclick="likePost(${index})"
+style="
+border:none;
+background:none">
+
+❤️ ${post.likes}
+
+</button>
+
+<span>
+💬 ${post.comments} replies
+</span>
+
+</div>
+
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+
+/* =====================================================
+   COMMUNITY POST
+===================================================== */
+
+function createCommunityPost(){
+
+if(!currentUser){
+
+showToast(
+"Please login first."
+);
+
+return;
+
+}
+
+
+if(
+currentUser.accountType==="child"
+){
+
+showToast(
+"Community posting is available for parents."
+);
+
+return;
+
+}
+
+
+const input =
+document.getElementById(
+"communityInput"
+);
+
+
+const text =
+input.value.trim();
+
+
+if(!text){
+
+showToast(
+"Write something first."
+);
+
+return;
+
+}
+
+
+communityPosts.unshift({
+
+author:currentUser.name,
+
+text:text,
+
+likes:0,
+
+comments:0
+
+});
+
+
+input.value="";
+
+saveData();
+
+displayCommunity();
+
+showToast(
+"Your community post was published! 💬"
+);
+
+}
+
+
+/* =====================================================
+   COMMUNITY LIKE
+===================================================== */
+
+function likePost(index){
+
+communityPosts[index].likes++;
+
+saveData();
+
+displayCommunity();
+
+}
+
+
+/* =====================================================
+   LEADERBOARD
+===================================================== */
+
+function updateLeaderboard(){
+
+const list =
+document.getElementById(
+"leaderboardList"
+);
+
+
+const sorted =
+[...artworks]
+.sort(
+(a,b)=>b.score-a.score
+);
+
+
+list.innerHTML="";
+
+
+sorted.forEach(
+(art,index)=>{
+
+const div =
+document.createElement("div");
+
+div.className="leader";
+
+
+div.innerHTML=`
+
+<div class="rank">
+#${index+1}
+</div>
+
+<div class="leader-avatar">
+${art.artist.charAt(0)}
+</div>
+
+<div class="leader-name">
+
+<strong>
+${art.artist}
+</strong>
+
+<br>
+
+<small>
+${art.title}
+</small>
+
+</div>
+
+<div class="score">
+
+⭐ ${art.score}
+
+</div>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+
+
+/* =====================================================
+   NOTIFICATIONS
+===================================================== */
+
+function addNotification(message){
+
+notifications.unshift({
+
+message:message,
+
+time:new Date()
+.toLocaleTimeString()
+
+});
+
+
+saveData();
+
+updateNotifications();
+
+}
+
+
+function updateNotifications(){
+
+const list =
+document.getElementById(
+"notificationList"
+);
+
+
+const count =
+document.getElementById(
+"notificationCount"
+);
+
+
+count.textContent=
+notifications.length;
+
+
+if(notifications.length===0){
+
+list.innerHTML=
+"<p class='notification-item'>No notifications yet.</p>";
+
+return;
+
+}
+
+
+list.innerHTML=
+notifications
+.slice(0,10)
+.map(
+n=>
+`<div class="notification-item">
+${n.message}
+<br>
+<small>${n.time}</small>
+</div>`
+)
+.join("");
+
+}
+
+
+function toggleNotifications(){
+
+document
+.getElementById(
+"notificationPanel"
+)
+.classList.toggle("active");
+
+}
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+function toggleMobileMenu(){
+
+const nav =
+document.querySelector(
+".nav-links"
+);
+
+
+if(
+nav.style.display==="flex"
+){
+
+nav.style.display="none";
+
+}
+
+else{
+
+nav.style.display="flex";
+
+nav.style.flexDirection="column";
+
+nav.style.position="absolute";
+
+nav.style.top="70px";
+
+nav.style.left="0";
+
+nav.style.right="0";
+
+nav.style.background="white";
+
+nav.style.padding="20px";
+
+}
+
+}
+
+
+/* =====================================================
+   INITIALIZATION
+===================================================== */
+
+displayArtworks();
+
+displayCommunity();
+
+updateLeaderboard();
+
+updateNotifications();
+
+updateDashboard();
+
+
+/* =====================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+===================================================== */
+
+document
+.querySelectorAll(".modal")
+.forEach(modal=>{
+
+modal.addEventListener(
+"click",
+function(event){
+
+if(event.target===modal){
+
+modal.classList.remove(
+"active"
+);
+
+}
+
+});
+
+});
+
+
+</script>
+
+</body>
+
+</html>
+```
